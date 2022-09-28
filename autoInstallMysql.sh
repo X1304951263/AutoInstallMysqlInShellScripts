@@ -1,6 +1,6 @@
 #!/bin/bash
 
-##自动化安装mysql并且重置密码为：xw123456，并开启3306端口，开放远程连接权限
+##自动化安装mysql并且重置密码为：xxxxxxxxx，并开启3306端口，开放远程连接权限
 echo "正在创建mysql目录......"
 cd /opt
 rm -rf mysql
@@ -29,7 +29,7 @@ echo "${str}"
 word=${str#*@}
 password=${word: 11}
 echo "mysql密码：${password}"
-echo "正在重置mysql@root用户密码为:'xw123456',并且开放远程连接权限中..."
+echo "正在重置mysql@root用户密码为:'xxxxxxxx',并且开放远程连接权限中..."
 cd /opt
 chmod 777 ex.exp
 expect ex.exp "${password}"
