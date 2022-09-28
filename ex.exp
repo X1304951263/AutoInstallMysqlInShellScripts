@@ -1,0 +1,13 @@
+#!/usr/bin/expect
+set pwd [lindex $argv 0 ]
+spawn mysql -uroot -h127.0.0.1 -p
+expect "password:"
+send "${pwd}\r"
+expect "mysql"
+send "set global validate_password_length=8;\r"
+send "set global validate_password_policy=0;\r"
+send "ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'xw123456';\r"
+send "GRANT ALL PRIVILEGES ON *.* TO 'root'@'%' IDENTIFIED BY 'xw123456' WITH GRANT OPTION;\r"
+send "FLUSH PRIVILEGES;\r"
+send "exit;\r"
+expect eof
